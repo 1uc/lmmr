@@ -1,7 +1,6 @@
 import json
 import os
 import pickle
-import numpy as np
 import itertools
 
 
@@ -19,6 +18,14 @@ def ensure_directory_exists(filename):
     dirname = os.path.dirname(filename)
     if dirname and not os.path.exists(dirname):
         os.makedirs(dirname)
+
+
+def read_array(filename, key):
+    import numpy as np
+    import h5py
+
+    with h5py.File(filename, "r") as h5:
+        return np.array(h5[key])
 
 
 def read_something(filename, command, mode="r"):
@@ -48,6 +55,8 @@ class NumpyEncoder(json.JSONEncoder):
     # credit: https://stackoverflow.com/a/47626762
 
     def default(self, obj):
+        import numpy as np
+
         transforms = [
             (np.ndarray, lambda obj: obj.tolist()),
             (np.float16, lambda obj: float(obj)),
