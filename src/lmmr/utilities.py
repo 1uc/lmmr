@@ -1,3 +1,6 @@
+# SPDX-License-Identifier: MIT
+# Copyright (c) 2021 ETH Zurich, Luc Grosheintz-Laval
+
 def merge_dict(d1, d2):
     """Merge two dictionaries, i.e. {**d1, **d2} in Python 3.5 onwards."""
     d12 = d1.copy()
