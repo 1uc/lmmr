@@ -7,3 +7,9 @@ close the file can be hidden in my use-cases.
 **Note:** Probably you don't want to use this package. It's open-source mostly
 for the purpose of having easy access to it. Nevertheless, you're free to use
 any of it in your own projects.
+
+## License & Copyright
+This package is distributed under the MIT license, see LICENSE and was
+initially developed at the Seminar of Applied Mathematics at ETH Zurich.
+
+Copyright (c) 2021 ETH Zurich, Luc Grosheintz-Laval
