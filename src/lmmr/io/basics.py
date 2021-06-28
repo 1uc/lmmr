@@ -5,6 +5,7 @@ import json
 import os
 import pickle
 import itertools
+import csv
 
 
 def first_non_existant(pattern):
@@ -31,14 +32,15 @@ def read_array(filename, key):
         return np.array(h5[key])
 
 
-def read_something(filename, command, mode="r"):
-    with open(filename, mode) as f:
+
+def read_something(filename, command, mode="r", **kwargs):
+    with open(filename, mode, **kwargs) as f:
         return command(f)
 
 
-def write_something(filename, command, mode="w"):
+def write_something(filename, command, mode="w", **kwargs):
     ensure_directory_exists(filename)
-    with open(filename, mode) as f:
+    with open(filename, mode=mode, **kwargs) as f:
         command(f)
 
 
@@ -88,3 +90,11 @@ def read_pickle(filename):
 
 def write_pickle(filename, obj):
     write_something(filename, lambda f: pickle.dump(obj, f), mode="wb")
+
+
+def read_csv(filename, delimiter=","):
+    def parse(f):
+        reader = csv.DictReader(f, delimiter=delimiter)
+        return [row for row in reader]
+
+    return read_something(filename, parse, newline="", encoding="utf-8")
