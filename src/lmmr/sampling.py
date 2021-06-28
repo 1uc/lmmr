@@ -10,4 +10,8 @@ def joint_choice(arrays, n, axis=0):
     N = arrays[0].shape[axis]
     I = rng.choice(N, size=(n,), replace=False)
 
-    return tuple(np.swapaxes(np.swapaxes(a, 0, axis)[I, ...], 0, axis) for a in arrays)
+    subsampled_arrays = tuple(
+        np.swapaxes(np.swapaxes(a, 0, axis)[I, ...], 0, axis) for a in arrays
+    )
+
+    return subsampled_arrays, I
