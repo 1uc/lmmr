@@ -24,13 +24,16 @@ def ensure_directory_exists(filename):
         os.makedirs(dirname)
 
 
-def read_array(filename, key):
+def read_array(filename, key, slices=None):
     import numpy as np
     import h5py
 
     with h5py.File(filename, "r") as h5:
-        return np.array(h5[key])
+        if slices is None:
+            return np.array(h5[key])
 
+        else:
+            return np.array(h5[key][slices])
 
 
 def read_something(filename, command, mode="r", **kwargs):
