@@ -18,9 +18,7 @@ The following instruction are for Linux. You might need to use `pip3` instead of
       ```
 
   2. Change into the newly cloned repository
-      ```
-      cd lmmr
-      ```
+        cd lmmr
 
   3. Use `pip` to install the package locally. If you don't need to edit
   the code:
