@@ -27,7 +27,7 @@ The following instruction are for Linux. You might need to use `pip3` instead of
       ```
       pip install --user .
       ```
-  or as an editably package:
+  or as an editable package:
       ```
       pip install --user -e .
       ```
