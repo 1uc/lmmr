@@ -13,16 +13,20 @@ The following instruction are for Linux. You might need to use `pip3` instead of
 `pip` depending on your distro.
 
   1. Clone (or download) the repository.
+
      git clone git@github.com:grosheintz/lmmr.git
 
   2. Change into the newly cloned repository
+
      cd lmmr
 
   3. Use `pip` to install the package locally. If you don't need to edit
   the code:
+
      pip install --user .
 
   or as an editably package:
+
      pip install --user -e .
 
 
