@@ -29,7 +29,7 @@ The following instruction are for Linux. You might need to use `pip3` instead of
       ```
   or as an editably package:
       ```
-     pip install --user -e .
+      pip install --user -e .
       ```
 
 
