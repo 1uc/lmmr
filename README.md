@@ -14,7 +14,7 @@ The following instruction are for Linux. You might need to use `pip3` instead of
 
   1. Clone (or download) the repository.
 
-     git clone git@github.com:grosheintz/lmmr.git
+       git clone git@github.com:grosheintz/lmmr.git
 
   2. Change into the newly cloned repository
 
