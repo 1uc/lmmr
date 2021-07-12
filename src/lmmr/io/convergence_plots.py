@@ -9,34 +9,6 @@ import matplotlib.pyplot as plt
 from lmmr.io import write_pickle
 
 
-def linestyle(solver):
-    wb = solver["wb"]
-    order = np.max(solver["order"])
-
-    colors_ = {1: "green", 2: "blue", 3: "purple", 4: "red", 5: "orange"}
-
-    kwargs_ = {
-        "constant": {
-            "marker": "P",
-            "linestyle": "-",
-            "linewidth": 3,
-            "color": colors_[order],
-        },
-        "isentropic": {
-            "marker": "o",
-            "linestyle": ":",
-            "linewidth": 3,
-            "color": colors_[order],
-        },
-    }
-
-    return kwargs_[wb]
-
-
-def convergence_plot_kwargs(solver):
-    return linestyle(solver)
-
-
 class SplitConvergencePlot:
     """Facilitates converence plots.
 
@@ -100,10 +72,14 @@ class SplitConvergencePlot:
 
     # -- Implementation ----------------------------------------------------------
     def error_style(self, method):
-        return convergence_plot_kwargs(method)
+        raise NotImplementedError(
+            f"{self.__class__.__name__} hasn't implemented `error_style`."
+        )
 
     def rate_style(self, method):
-        return convergence_plot_kwargs(method)
+        raise NotImplementedError(
+            f"{self.__class__.__name__} hasn't implemented `rate_style`."
+        )
 
     def format_title(self, title_params):
         return title_params
