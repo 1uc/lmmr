@@ -11,6 +11,7 @@ from .basics import read_json, write_json
 from .basics import read_pickle, write_pickle
 from .basics import read_csv
 from .basics import read_array
+from .basics import savefig
 from .basics import NumpyEncoder
 
 import lmmr.io.latex_tables

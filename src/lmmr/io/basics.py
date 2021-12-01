@@ -8,6 +8,8 @@ import itertools
 import csv
 import hashlib
 
+import lmmr
+
 
 def random_hash(length=5):
     import numpy as np
@@ -116,3 +118,10 @@ def read_csv(filename, delimiter=","):
         return [row for row in reader]
 
     return read_something(filename, parse, newline="", encoding="utf-8")
+
+
+def savefig(filename, dpi=300, bbox_inches="tight", **kwargs):
+    import matplotlib.pyplot as plt
+
+    lmmr.io.ensure_directory_exists(filename)
+    plt.savefig(filename, dpi=dpi, bbox_inches=bbox_inches, **kwargs)
