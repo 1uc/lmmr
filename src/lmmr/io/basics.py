@@ -6,6 +6,14 @@ import os
 import pickle
 import itertools
 import csv
+import hashlib
+
+
+def random_hash(length=5):
+    import numpy as np
+
+    hash = hashlib.sha256(f"{np.random.randint(2**32-1)}".encode()).hexdigest()
+    return hash[:length]
 
 
 def first_non_existant(pattern):
