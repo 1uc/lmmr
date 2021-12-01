@@ -4,4 +4,5 @@
 import lmmr.io
 import lmmr.utilities
 import lmmr.sampling
+import lmmr.random
 import lmmr.index_magic
