@@ -20,3 +20,19 @@ def percentile_indices(values, percentiles):
     n_values = values.size
     ranked_values = sorted(np.arange(n_values), key=lambda i: values[i])
     return [ranked_values[int(p * (n_values - 1))] for p in percentiles]
+
+
+def uniform_bin_index(x, min_max_n=None, centers=None):
+    if min_max_n is not None:
+        xmin, xmax, n = min_max_n
+
+    elif centers is not None:
+        dx = centers[1] - centers[0]
+        xmin = centers[0] - 0.5 * dx
+        xmax = centers[-1] + 0.5 * dx
+        n = centers.size
+
+    dx = (xmax - xmin) / n
+    i = np.array(np.floor((x - xmin) / dx), dtype=np.int64)
+
+    return np.clip(i, 0, n - 1)
