@@ -10,7 +10,7 @@ from .basics import read_txt, write_txt
 from .basics import read_json, write_json
 from .basics import read_pickle, write_pickle
 from .basics import read_csv
-from .basics import read_array
+from .basics import read_array, read_array_shape
 from .basics import savefig
 from .basics import NumpyEncoder
 

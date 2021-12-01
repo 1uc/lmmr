@@ -90,6 +90,13 @@ def read_array_nc(filename, key, slices=None):
         return np.array(nc[key])
 
 
+def read_array_shape(filename, key):
+    import h5py
+
+    with h5py.File(filename, "r") as h5:
+        return h5[key].shape
+
+
 def read_something(filename, command, mode="r", **kwargs):
     with open(filename, mode, **kwargs) as f:
         return command(f)
