@@ -35,8 +35,10 @@ def first_non_existant(pattern):
     return next(d for d in dir_gen if not os.path.exists(d))
 
 
-def ensure_directory_exists(filename):
-    dirname = os.path.dirname(filename)
+def ensure_directory_exists(filename=None, dirname=None):
+    if dirname is None:
+        dirname = os.path.dirname(filename)
+
     if dirname and not os.path.exists(dirname):
         os.makedirs(dirname)
 
