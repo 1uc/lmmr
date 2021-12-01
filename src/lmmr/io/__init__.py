@@ -2,6 +2,7 @@
 # Copyright (c) 2021 ETH Zurich, Luc Grosheintz-Laval
 
 from .basics import random_hash
+from .basics import symlink
 from .basics import first_non_existant
 from .basics import ensure_directory_exists
 from .basics import read_something, write_something

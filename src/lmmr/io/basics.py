@@ -16,6 +16,13 @@ def random_hash(length=5):
     return hash[:length]
 
 
+def symlink(src, dst, overwrite=False):
+    if overwrite and os.path.islink(dst):
+        os.unlink(dst)
+
+    os.symlink(src, dst)
+
+
 def first_non_existant(pattern):
     """Returns the first path which does not exist.
 
