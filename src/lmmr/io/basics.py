@@ -43,7 +43,31 @@ def ensure_directory_exists(filename=None, dirname=None):
         os.makedirs(dirname)
 
 
-def read_array(filename, key, slices=None):
+def _guess_hdf5_netcdf(filename):
+    if filename.endswith(".h5"):
+        return "HDF5"
+
+    elif filename.endswith(".nc"):
+        return "NETCDF"
+
+    else:
+        raise RuntimeError("Can't deduce file format.")
+
+
+def read_array(filename, key, slices=None, format=None):
+    if format is None:
+        format = _guess_hdf5_netcdf(filename)
+
+    if format == "HDF5":
+        return read_array_h5(filename, key, slices)
+
+    if format == "NETCDF":
+        return read_array_nc(filename, key, slices)
+
+    raise RuntimeError(f"Unknown format. [{format}]")
+
+
+def read_array_h5(filename, key, slices=None):
     import numpy as np
     import h5py
 
@@ -53,6 +77,17 @@ def read_array(filename, key, slices=None):
 
         else:
             return np.array(h5[key][slices])
+
+
+def read_array_nc(filename, key, slices=None):
+    import numpy as np
+    import netCDF4
+
+    if slices is not None:
+        raise NotImplemented("Slicing must be implement first.")
+
+    with netCDF4.Dataset(filename, "r") as nc:
+        return np.array(nc[key])
 
 
 def read_something(filename, command, mode="r", **kwargs):
